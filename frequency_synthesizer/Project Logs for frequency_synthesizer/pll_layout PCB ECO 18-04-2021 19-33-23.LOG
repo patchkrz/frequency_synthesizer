@@ -1,0 +1,4 @@
+Added Component: Designator=C23(C0603)
+Added Pin To Net: NetName=3.3V Pin=C23-1
+Added Pin To Net: NetName=GND Pin=C23-2
+Added Member To Class: ClassName=pll_schematic Member=Component C23 100nF

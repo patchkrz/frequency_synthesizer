@@ -1,0 +1,4 @@
+Added Component: Designator=R?(R0603)
+Added Pin To Net: NetName=REF-IN Pin=R?-1
+Added Pin To Net: NetName=GND Pin=R?-2
+Added Member To Class: ClassName=pll_schematic Member=Component R? 51.1R

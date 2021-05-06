@@ -1,0 +1,637 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD20\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">26/04/2021</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">01:15:33</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc" class="file"><acronym title="C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc">C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">95</td></tr>
+</table>
+</td>
+</table><a name="IDGJZ2MQXISUHBIMDFIF15RIGX1KRNDKDXARK4CHLS52DU2ZVNXOB"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID4DZ0HKFN2RFTGNYV5MJXYRXANKSKYTZHBECZOTBO5G1O2EKDIS1P">Clearance Constraint (Gap=0.3mm) (InNamedPolygon('NETC21_2_L01_P004')),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDGVMB3DKVQIHBJMG2W1IOH3XGETDAY05GVSUF2P0OIYWHJMSAEE">Clearance Constraint (Gap=0.3mm) (InNamedPolygon('NETC20_2_L01_P002')),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDFMDKP43B13LEDL1KTDHDE520L5FS5RXCOLRYHLBKE02GFY0BLJK">Clearance Constraint (Gap=0.2mm) (InNet('NetC20_1')),(OnLayer('Top Layer'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDD0PNJO2JK125FODA0YXO1SISRDYUDXFQJJBFIGE0WFN0N0GMR1OO">Clearance Constraint (Gap=0.3mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDHNNEJFOISHDWM13BW5DZEZR53HUAWX0HDEZRSOGPWEU3WU0SEO2O">Clearance Constraint (Gap=0.2mm) (InNet('NetC21_1')),(OnLayer('Top Layer'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID0QQZMJVGJM3YPYWEG4EGXX2NNM5UVSYBWJOJBHKFXYL0GUTUDWWG">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDVAOTMMUFROLRLTIQ4FENGLFWIDRDII3Y1PULWJQKR05LWKK3B1F">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDKENVV33O0JM2J4PDNNQL2KU45BXLGRYVCNB0J0MC2H1O0543AKLI">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDVNHW5TEMRY0ANAXFLHWYT5ENRLANE21GG1BFDZHQOGVSPLB5I2TM">Width Constraint (Min=0.2mm) (Max=2mm) (Preferred=0.254mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID0BYC3DU4H3LPPFGGFLVDILU1OEXO0ND0QXPHLCGKKOHQFFH0BX1E">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDKLROSZVJ2VHUILW5ENERGNUKWMAAYKONPY1FHDG5CFMFD2IUTH4P">Hole Size Constraint (Min=0.4mm) (Max=3.5mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDLRPQSKWYTKA4KV2QI15WVKOINDR0MBPCMLFUTCK4HHUUT25VWC1P">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID43ZDYQ3ZL2HSF4YD2YEBYQFSUBT4VEFGH2QW0RNCEUXDDN4NDGRG">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">56</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDEPWPJYCQSVONOYITMO4WP2MIJ4QBEBXTEXEP1OCS2CQDNAPSEFF">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</a></td>
+<td class="column2">39</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDBMBXFWWQ0A3PI5DFFSHBOCI5TD0LM32CGQUKGQ1HVTN1WICL1JI">Silk to Silk (Clearance=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDPFDVY35IWY0WDMZ0KCGXUPSYVH0PRVWDXSSO3YKIPIEGVYSOOQWE">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDP3JD5CQCF5NRU0VLMKZ04JEJAVHJ4RKGVKVS5F1XX2HDXLUS">Room pll_schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('pll_schematic'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDP104SQH33ZY1FVA5JATQNFE5OBQWB23RLRVEYICI2WKS23R0CVRM">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">95</td>
+</tr>
+</table><br><a name="ID43ZDYQ3ZL2HSF4YD2YEBYQFSUBT4VEFGH2QW0RNCEUXDDN4NDGRG"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3219.543mil|Location2.X=3230.793mil|Location1.Y=2725.93mil|Location2.Y=2737.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3219.543mil|Location2.X=3230.793mil|Location1.Y=2725.93mil|Location2.Y=2737.18mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.2mm &lt; 0.254mm) Between Pad U1-1(81.569mm,69.631mm) on Top Layer And Pad U1-2(81.569mm,69.132mm) on Top Layer [Top Solder] Mask Sliver [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3222.987mil|Location2.X=3234.237mil|Location1.Y=2745.123mil|Location2.Y=2756.373mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3222.987mil|Location2.X=3234.237mil|Location1.Y=2745.123mil|Location2.Y=2756.373mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.247mm &lt; 0.254mm) Between Pad U1-1(81.569mm,69.631mm) on Top Layer And Pad U1-28(82.244mm,70.306mm) on Top Layer [Top Solder] Mask Sliver [0.247mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3223.972mil|Location2.X=3235.222mil|Location1.Y=2729.867mil|Location2.Y=2741.117mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3223.972mil|Location2.X=3235.222mil|Location1.Y=2729.867mil|Location2.Y=2741.117mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.225mm &lt; 0.254mm) Between Pad U1-1(81.569mm,69.631mm) on Top Layer And Pad U1-29(83.494mm,67.882mm) on Top Layer [Top Solder] Mask Sliver [0.225mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3261.865mil|Location2.X=3273.115mil|Location1.Y=2585.182mil|Location2.Y=2596.432mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3261.865mil|Location2.X=3273.115mil|Location1.Y=2585.182mil|Location2.Y=2596.432mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.2mm &lt; 0.254mm) Between Pad U1-10(82.744mm,65.456mm) on Top Layer And Pad U1-11(83.244mm,65.456mm) on Top Layer [Top Solder] Mask Sliver [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3246.117mil|Location2.X=3257.367mil|Location1.Y=2589.611mil|Location2.Y=2600.861mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3246.117mil|Location2.X=3257.367mil|Location1.Y=2589.611mil|Location2.Y=2600.861mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.225mm &lt; 0.254mm) Between Pad U1-10(82.744mm,65.456mm) on Top Layer And Pad U1-29(83.494mm,67.882mm) on Top Layer [Top Solder] Mask Sliver [0.225mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3242.18mil|Location2.X=3253.43mil|Location1.Y=2585.182mil|Location2.Y=2596.432mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3242.18mil|Location2.X=3253.43mil|Location1.Y=2585.182mil|Location2.Y=2596.432mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.2mm &lt; 0.254mm) Between Pad U1-10(82.744mm,65.456mm) on Top Layer And Pad U1-9(82.244mm,65.456mm) on Top Layer [Top Solder] Mask Sliver [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3281.55mil|Location2.X=3292.8mil|Location1.Y=2585.182mil|Location2.Y=2596.432mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3281.55mil|Location2.X=3292.8mil|Location1.Y=2585.182mil|Location2.Y=2596.432mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.2mm &lt; 0.254mm) Between Pad U1-11(83.244mm,65.456mm) on Top Layer And Pad U1-12(83.744mm,65.456mm) on Top Layer [Top Solder] Mask Sliver [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3265.802mil|Location2.X=3277.052mil|Location1.Y=2589.611mil|Location2.Y=2600.861mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3265.802mil|Location2.X=3277.052mil|Location1.Y=2589.611mil|Location2.Y=2600.861mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.225mm &lt; 0.254mm) Between Pad U1-11(83.244mm,65.456mm) on Top Layer And Pad U1-29(83.494mm,67.882mm) on Top Layer [Top Solder] Mask Sliver [0.225mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3301.235mil|Location2.X=3312.485mil|Location1.Y=2585.182mil|Location2.Y=2596.432mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3301.235mil|Location2.X=3312.485mil|Location1.Y=2585.182mil|Location2.Y=2596.432mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.2mm &lt; 0.254mm) Between Pad U1-12(83.744mm,65.456mm) on Top Layer And Pad U1-13(84.244mm,65.456mm) on Top Layer [Top Solder] Mask Sliver [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3285.487mil|Location2.X=3296.737mil|Location1.Y=2589.611mil|Location2.Y=2600.861mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3285.487mil|Location2.X=3296.737mil|Location1.Y=2589.611mil|Location2.Y=2600.861mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.225mm &lt; 0.254mm) Between Pad U1-12(83.744mm,65.456mm) on Top Layer And Pad U1-29(83.494mm,67.882mm) on Top Layer [Top Solder] Mask Sliver [0.225mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3320.921mil|Location2.X=3332.171mil|Location1.Y=2585.182mil|Location2.Y=2596.432mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3320.921mil|Location2.X=3332.171mil|Location1.Y=2585.182mil|Location2.Y=2596.432mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.2mm &lt; 0.254mm) Between Pad U1-13(84.244mm,65.456mm) on Top Layer And Pad U1-14(84.744mm,65.456mm) on Top Layer [Top Solder] Mask Sliver [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3305.173mil|Location2.X=3316.423mil|Location1.Y=2589.611mil|Location2.Y=2600.861mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3305.173mil|Location2.X=3316.423mil|Location1.Y=2589.611mil|Location2.Y=2600.861mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.225mm &lt; 0.254mm) Between Pad U1-13(84.244mm,65.456mm) on Top Layer And Pad U1-29(83.494mm,67.882mm) on Top Layer [Top Solder] Mask Sliver [0.225mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3340.113mil|Location2.X=3351.363mil|Location1.Y=2588.627mil|Location2.Y=2599.877mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3340.113mil|Location2.X=3351.363mil|Location1.Y=2588.627mil|Location2.Y=2599.877mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.247mm &lt; 0.254mm) Between Pad U1-14(84.744mm,65.456mm) on Top Layer And Pad U1-15(85.419mm,66.131mm) on Top Layer [Top Solder] Mask Sliver [0.247mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3324.858mil|Location2.X=3336.108mil|Location1.Y=2589.611mil|Location2.Y=2600.861mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3324.858mil|Location2.X=3336.108mil|Location1.Y=2589.611mil|Location2.Y=2600.861mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.225mm &lt; 0.254mm) Between Pad U1-14(84.744mm,65.456mm) on Top Layer And Pad U1-29(83.494mm,67.882mm) on Top Layer [Top Solder] Mask Sliver [0.225mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3343.558mil|Location2.X=3354.808mil|Location1.Y=2607.82mil|Location2.Y=2619.07mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3343.558mil|Location2.X=3354.808mil|Location1.Y=2607.82mil|Location2.Y=2619.07mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.2mm &lt; 0.254mm) Between Pad U1-15(85.419mm,66.131mm) on Top Layer And Pad U1-16(85.419mm,66.631mm) on Top Layer [Top Solder] Mask Sliver [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3339.129mil|Location2.X=3350.379mil|Location1.Y=2594.04mil|Location2.Y=2605.29mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3339.129mil|Location2.X=3350.379mil|Location1.Y=2594.04mil|Location2.Y=2605.29mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.225mm &lt; 0.254mm) Between Pad U1-15(85.419mm,66.131mm) on Top Layer And Pad U1-29(83.494mm,67.882mm) on Top Layer [Top Solder] Mask Sliver [0.225mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3343.558mil|Location2.X=3354.808mil|Location1.Y=2627.505mil|Location2.Y=2638.755mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3343.558mil|Location2.X=3354.808mil|Location1.Y=2627.505mil|Location2.Y=2638.755mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.2mm &lt; 0.254mm) Between Pad U1-16(85.419mm,66.631mm) on Top Layer And Pad U1-17(85.419mm,67.131mm) on Top Layer [Top Solder] Mask Sliver [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3339.129mil|Location2.X=3350.379mil|Location1.Y=2611.757mil|Location2.Y=2623.007mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3339.129mil|Location2.X=3350.379mil|Location1.Y=2611.757mil|Location2.Y=2623.007mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.225mm &lt; 0.254mm) Between Pad U1-16(85.419mm,66.631mm) on Top Layer And Pad U1-29(83.494mm,67.882mm) on Top Layer [Top Solder] Mask Sliver [0.225mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3343.558mil|Location2.X=3354.808mil|Location1.Y=2647.19mil|Location2.Y=2658.44mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3343.558mil|Location2.X=3354.808mil|Location1.Y=2647.19mil|Location2.Y=2658.44mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.2mm &lt; 0.254mm) Between Pad U1-17(85.419mm,67.131mm) on Top Layer And Pad U1-18(85.419mm,67.631mm) on Top Layer [Top Solder] Mask Sliver [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3339.129mil|Location2.X=3350.379mil|Location1.Y=2631.442mil|Location2.Y=2642.692mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3339.129mil|Location2.X=3350.379mil|Location1.Y=2631.442mil|Location2.Y=2642.692mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.225mm &lt; 0.254mm) Between Pad U1-17(85.419mm,67.131mm) on Top Layer And Pad U1-29(83.494mm,67.882mm) on Top Layer [Top Solder] Mask Sliver [0.225mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3343.558mil|Location2.X=3354.808mil|Location1.Y=2666.875mil|Location2.Y=2678.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3343.558mil|Location2.X=3354.808mil|Location1.Y=2666.875mil|Location2.Y=2678.125mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.2mm &lt; 0.254mm) Between Pad U1-18(85.419mm,67.631mm) on Top Layer And Pad U1-19(85.419mm,68.131mm) on Top Layer [Top Solder] Mask Sliver [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3339.129mil|Location2.X=3350.379mil|Location1.Y=2651.127mil|Location2.Y=2662.377mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3339.129mil|Location2.X=3350.379mil|Location1.Y=2651.127mil|Location2.Y=2662.377mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.225mm &lt; 0.254mm) Between Pad U1-18(85.419mm,67.631mm) on Top Layer And Pad U1-29(83.494mm,67.882mm) on Top Layer [Top Solder] Mask Sliver [0.225mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3343.558mil|Location2.X=3354.808mil|Location1.Y=2686.56mil|Location2.Y=2697.81mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3343.558mil|Location2.X=3354.808mil|Location1.Y=2686.56mil|Location2.Y=2697.81mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.2mm &lt; 0.254mm) Between Pad U1-19(85.419mm,68.131mm) on Top Layer And Pad U1-20(85.419mm,68.631mm) on Top Layer [Top Solder] Mask Sliver [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3339.129mil|Location2.X=3350.379mil|Location1.Y=2670.812mil|Location2.Y=2682.062mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3339.129mil|Location2.X=3350.379mil|Location1.Y=2670.812mil|Location2.Y=2682.062mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.225mm &lt; 0.254mm) Between Pad U1-19(85.419mm,68.131mm) on Top Layer And Pad U1-29(83.494mm,67.882mm) on Top Layer [Top Solder] Mask Sliver [0.225mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3223.972mil|Location2.X=3235.222mil|Location1.Y=2710.182mil|Location2.Y=2721.432mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3223.972mil|Location2.X=3235.222mil|Location1.Y=2710.182mil|Location2.Y=2721.432mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.225mm &lt; 0.254mm) Between Pad U1-2(81.569mm,69.132mm) on Top Layer And Pad U1-29(83.494mm,67.882mm) on Top Layer [Top Solder] Mask Sliver [0.225mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3219.543mil|Location2.X=3230.793mil|Location1.Y=2706.245mil|Location2.Y=2717.495mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3219.543mil|Location2.X=3230.793mil|Location1.Y=2706.245mil|Location2.Y=2717.495mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.2mm &lt; 0.254mm) Between Pad U1-2(81.569mm,69.132mm) on Top Layer And Pad U1-3(81.569mm,68.631mm) on Top Layer [Top Solder] Mask Sliver [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3343.558mil|Location2.X=3354.808mil|Location1.Y=2706.245mil|Location2.Y=2717.495mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3343.558mil|Location2.X=3354.808mil|Location1.Y=2706.245mil|Location2.Y=2717.495mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.2mm &lt; 0.254mm) Between Pad U1-20(85.419mm,68.631mm) on Top Layer And Pad U1-21(85.419mm,69.132mm) on Top Layer [Top Solder] Mask Sliver [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3339.129mil|Location2.X=3350.379mil|Location1.Y=2690.497mil|Location2.Y=2701.747mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3339.129mil|Location2.X=3350.379mil|Location1.Y=2690.497mil|Location2.Y=2701.747mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.225mm &lt; 0.254mm) Between Pad U1-20(85.419mm,68.631mm) on Top Layer And Pad U1-29(83.494mm,67.882mm) on Top Layer [Top Solder] Mask Sliver [0.225mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3343.558mil|Location2.X=3354.808mil|Location1.Y=2725.93mil|Location2.Y=2737.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3343.558mil|Location2.X=3354.808mil|Location1.Y=2725.93mil|Location2.Y=2737.18mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.2mm &lt; 0.254mm) Between Pad U1-21(85.419mm,69.132mm) on Top Layer And Pad U1-22(85.419mm,69.631mm) on Top Layer [Top Solder] Mask Sliver [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3339.129mil|Location2.X=3350.379mil|Location1.Y=2710.182mil|Location2.Y=2721.432mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3339.129mil|Location2.X=3350.379mil|Location1.Y=2710.182mil|Location2.Y=2721.432mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.225mm &lt; 0.254mm) Between Pad U1-21(85.419mm,69.132mm) on Top Layer And Pad U1-29(83.494mm,67.882mm) on Top Layer [Top Solder] Mask Sliver [0.225mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3340.113mil|Location2.X=3351.363mil|Location1.Y=2745.123mil|Location2.Y=2756.373mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3340.113mil|Location2.X=3351.363mil|Location1.Y=2745.123mil|Location2.Y=2756.373mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.247mm &lt; 0.254mm) Between Pad U1-22(85.419mm,69.631mm) on Top Layer And Pad U1-23(84.744mm,70.306mm) on Top Layer [Top Solder] Mask Sliver [0.247mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3339.129mil|Location2.X=3350.379mil|Location1.Y=2729.867mil|Location2.Y=2741.117mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3339.129mil|Location2.X=3350.379mil|Location1.Y=2729.867mil|Location2.Y=2741.117mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.225mm &lt; 0.254mm) Between Pad U1-22(85.419mm,69.631mm) on Top Layer And Pad U1-29(83.494mm,67.882mm) on Top Layer [Top Solder] Mask Sliver [0.225mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3320.921mil|Location2.X=3332.171mil|Location1.Y=2748.568mil|Location2.Y=2759.818mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3320.921mil|Location2.X=3332.171mil|Location1.Y=2748.568mil|Location2.Y=2759.818mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.2mm &lt; 0.254mm) Between Pad U1-23(84.744mm,70.306mm) on Top Layer And Pad U1-24(84.244mm,70.306mm) on Top Layer [Top Solder] Mask Sliver [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3324.858mil|Location2.X=3336.108mil|Location1.Y=2744.139mil|Location2.Y=2755.389mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3324.858mil|Location2.X=3336.108mil|Location1.Y=2744.139mil|Location2.Y=2755.389mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.225mm &lt; 0.254mm) Between Pad U1-23(84.744mm,70.306mm) on Top Layer And Pad U1-29(83.494mm,67.882mm) on Top Layer [Top Solder] Mask Sliver [0.225mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3301.235mil|Location2.X=3312.485mil|Location1.Y=2748.568mil|Location2.Y=2759.818mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3301.235mil|Location2.X=3312.485mil|Location1.Y=2748.568mil|Location2.Y=2759.818mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.2mm &lt; 0.254mm) Between Pad U1-24(84.244mm,70.306mm) on Top Layer And Pad U1-25(83.744mm,70.306mm) on Top Layer [Top Solder] Mask Sliver [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3305.173mil|Location2.X=3316.423mil|Location1.Y=2744.139mil|Location2.Y=2755.389mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3305.173mil|Location2.X=3316.423mil|Location1.Y=2744.139mil|Location2.Y=2755.389mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.225mm &lt; 0.254mm) Between Pad U1-24(84.244mm,70.306mm) on Top Layer And Pad U1-29(83.494mm,67.882mm) on Top Layer [Top Solder] Mask Sliver [0.225mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3281.55mil|Location2.X=3292.8mil|Location1.Y=2748.568mil|Location2.Y=2759.818mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3281.55mil|Location2.X=3292.8mil|Location1.Y=2748.568mil|Location2.Y=2759.818mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.2mm &lt; 0.254mm) Between Pad U1-25(83.744mm,70.306mm) on Top Layer And Pad U1-26(83.244mm,70.306mm) on Top Layer [Top Solder] Mask Sliver [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3285.487mil|Location2.X=3296.737mil|Location1.Y=2744.139mil|Location2.Y=2755.389mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3285.487mil|Location2.X=3296.737mil|Location1.Y=2744.139mil|Location2.Y=2755.389mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.225mm &lt; 0.254mm) Between Pad U1-25(83.744mm,70.306mm) on Top Layer And Pad U1-29(83.494mm,67.882mm) on Top Layer [Top Solder] Mask Sliver [0.225mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3261.865mil|Location2.X=3273.115mil|Location1.Y=2748.568mil|Location2.Y=2759.818mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3261.865mil|Location2.X=3273.115mil|Location1.Y=2748.568mil|Location2.Y=2759.818mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.2mm &lt; 0.254mm) Between Pad U1-26(83.244mm,70.306mm) on Top Layer And Pad U1-27(82.744mm,70.306mm) on Top Layer [Top Solder] Mask Sliver [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3265.802mil|Location2.X=3277.052mil|Location1.Y=2744.139mil|Location2.Y=2755.389mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3265.802mil|Location2.X=3277.052mil|Location1.Y=2744.139mil|Location2.Y=2755.389mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.225mm &lt; 0.254mm) Between Pad U1-26(83.244mm,70.306mm) on Top Layer And Pad U1-29(83.494mm,67.882mm) on Top Layer [Top Solder] Mask Sliver [0.225mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3242.18mil|Location2.X=3253.43mil|Location1.Y=2748.568mil|Location2.Y=2759.818mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3242.18mil|Location2.X=3253.43mil|Location1.Y=2748.568mil|Location2.Y=2759.818mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.2mm &lt; 0.254mm) Between Pad U1-27(82.744mm,70.306mm) on Top Layer And Pad U1-28(82.244mm,70.306mm) on Top Layer [Top Solder] Mask Sliver [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3246.117mil|Location2.X=3257.367mil|Location1.Y=2744.139mil|Location2.Y=2755.389mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3246.117mil|Location2.X=3257.367mil|Location1.Y=2744.139mil|Location2.Y=2755.389mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.225mm &lt; 0.254mm) Between Pad U1-27(82.744mm,70.306mm) on Top Layer And Pad U1-29(83.494mm,67.882mm) on Top Layer [Top Solder] Mask Sliver [0.225mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3238.243mil|Location2.X=3249.493mil|Location1.Y=2744.139mil|Location2.Y=2755.389mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3238.243mil|Location2.X=3249.493mil|Location1.Y=2744.139mil|Location2.Y=2755.389mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.225mm &lt; 0.254mm) Between Pad U1-28(82.244mm,70.306mm) on Top Layer And Pad U1-29(83.494mm,67.882mm) on Top Layer [Top Solder] Mask Sliver [0.225mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3223.972mil|Location2.X=3235.222mil|Location1.Y=2690.497mil|Location2.Y=2701.747mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3223.972mil|Location2.X=3235.222mil|Location1.Y=2690.497mil|Location2.Y=2701.747mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.225mm &lt; 0.254mm) Between Pad U1-29(83.494mm,67.882mm) on Top Layer And Pad U1-3(81.569mm,68.631mm) on Top Layer [Top Solder] Mask Sliver [0.225mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3223.972mil|Location2.X=3235.222mil|Location1.Y=2670.812mil|Location2.Y=2682.062mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3223.972mil|Location2.X=3235.222mil|Location1.Y=2670.812mil|Location2.Y=2682.062mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.225mm &lt; 0.254mm) Between Pad U1-29(83.494mm,67.882mm) on Top Layer And Pad U1-4(81.569mm,68.131mm) on Top Layer [Top Solder] Mask Sliver [0.225mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3223.972mil|Location2.X=3235.222mil|Location1.Y=2651.127mil|Location2.Y=2662.377mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3223.972mil|Location2.X=3235.222mil|Location1.Y=2651.127mil|Location2.Y=2662.377mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.225mm &lt; 0.254mm) Between Pad U1-29(83.494mm,67.882mm) on Top Layer And Pad U1-5(81.569mm,67.631mm) on Top Layer [Top Solder] Mask Sliver [0.225mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3223.972mil|Location2.X=3235.222mil|Location1.Y=2631.442mil|Location2.Y=2642.692mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3223.972mil|Location2.X=3235.222mil|Location1.Y=2631.442mil|Location2.Y=2642.692mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.225mm &lt; 0.254mm) Between Pad U1-29(83.494mm,67.882mm) on Top Layer And Pad U1-6(81.569mm,67.131mm) on Top Layer [Top Solder] Mask Sliver [0.225mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3223.972mil|Location2.X=3235.222mil|Location1.Y=2611.757mil|Location2.Y=2623.007mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3223.972mil|Location2.X=3235.222mil|Location1.Y=2611.757mil|Location2.Y=2623.007mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.225mm &lt; 0.254mm) Between Pad U1-29(83.494mm,67.882mm) on Top Layer And Pad U1-7(81.569mm,66.631mm) on Top Layer [Top Solder] Mask Sliver [0.225mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3223.972mil|Location2.X=3235.222mil|Location1.Y=2603.883mil|Location2.Y=2615.133mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3223.972mil|Location2.X=3235.222mil|Location1.Y=2603.883mil|Location2.Y=2615.133mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.225mm &lt; 0.254mm) Between Pad U1-29(83.494mm,67.882mm) on Top Layer And Pad U1-8(81.569mm,66.131mm) on Top Layer [Top Solder] Mask Sliver [0.225mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3228.401mil|Location2.X=3239.651mil|Location1.Y=2589.611mil|Location2.Y=2600.861mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3228.401mil|Location2.X=3239.651mil|Location1.Y=2589.611mil|Location2.Y=2600.861mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.225mm &lt; 0.254mm) Between Pad U1-29(83.494mm,67.882mm) on Top Layer And Pad U1-9(82.244mm,65.456mm) on Top Layer [Top Solder] Mask Sliver [0.225mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3219.543mil|Location2.X=3230.793mil|Location1.Y=2686.56mil|Location2.Y=2697.81mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3219.543mil|Location2.X=3230.793mil|Location1.Y=2686.56mil|Location2.Y=2697.81mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.2mm &lt; 0.254mm) Between Pad U1-3(81.569mm,68.631mm) on Top Layer And Pad U1-4(81.569mm,68.131mm) on Top Layer [Top Solder] Mask Sliver [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3219.543mil|Location2.X=3230.793mil|Location1.Y=2666.875mil|Location2.Y=2678.125mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3219.543mil|Location2.X=3230.793mil|Location1.Y=2666.875mil|Location2.Y=2678.125mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.2mm &lt; 0.254mm) Between Pad U1-4(81.569mm,68.131mm) on Top Layer And Pad U1-5(81.569mm,67.631mm) on Top Layer [Top Solder] Mask Sliver [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3219.543mil|Location2.X=3230.793mil|Location1.Y=2647.19mil|Location2.Y=2658.44mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3219.543mil|Location2.X=3230.793mil|Location1.Y=2647.19mil|Location2.Y=2658.44mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.2mm &lt; 0.254mm) Between Pad U1-5(81.569mm,67.631mm) on Top Layer And Pad U1-6(81.569mm,67.131mm) on Top Layer [Top Solder] Mask Sliver [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3219.543mil|Location2.X=3230.793mil|Location1.Y=2627.505mil|Location2.Y=2638.755mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3219.543mil|Location2.X=3230.793mil|Location1.Y=2627.505mil|Location2.Y=2638.755mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.2mm &lt; 0.254mm) Between Pad U1-6(81.569mm,67.131mm) on Top Layer And Pad U1-7(81.569mm,66.631mm) on Top Layer [Top Solder] Mask Sliver [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3219.543mil|Location2.X=3230.793mil|Location1.Y=2607.82mil|Location2.Y=2619.07mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3219.543mil|Location2.X=3230.793mil|Location1.Y=2607.82mil|Location2.Y=2619.07mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.2mm &lt; 0.254mm) Between Pad U1-7(81.569mm,66.631mm) on Top Layer And Pad U1-8(81.569mm,66.131mm) on Top Layer [Top Solder] Mask Sliver [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3222.987mil|Location2.X=3234.237mil|Location1.Y=2588.627mil|Location2.Y=2599.877mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3222.987mil|Location2.X=3234.237mil|Location1.Y=2588.627mil|Location2.Y=2599.877mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.247mm &lt; 0.254mm) Between Pad U1-8(81.569mm,66.131mm) on Top Layer And Pad U1-9(82.244mm,65.456mm) on Top Layer [Top Solder] Mask Sliver [0.247mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDEPWPJYCQSVONOYITMO4WP2MIJ4QBEBXTEXEP1OCS2CQDNAPSEFF"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3182.562mil|Location2.X=3193.812mil|Location1.Y=2867.997mil|Location2.Y=2879.247mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3182.562mil|Location2.X=3193.812mil|Location1.Y=2867.997mil|Location2.Y=2879.247mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.11mm &lt; 0.254mm) Between Pad C11-1(81.5mm,73.425mm) on Top Layer And Text "C11" (80.875mm,72.784mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.11mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3493.586mil|Location2.X=3504.836mil|Location1.Y=2826.403mil|Location2.Y=2837.653mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3493.586mil|Location2.X=3504.836mil|Location1.Y=2826.403mil|Location2.Y=2837.653mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.16mm &lt; 0.254mm) Between Pad C12-1(89.425mm,71.995mm) on Top Layer And Text "C12" (88.75mm,71.85mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.16mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3493.581mil|Location2.X=3504.831mil|Location1.Y=2872.812mil|Location2.Y=2884.062mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3493.581mil|Location2.X=3504.831mil|Location1.Y=2872.812mil|Location2.Y=2884.062mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.161mm &lt; 0.254mm) Between Pad C12-2(89.425mm,73.555mm) on Top Layer And Text "C12" (88.75mm,71.85mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.161mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3153.136mil|Location2.X=3164.386mil|Location1.Y=2869.707mil|Location2.Y=2880.957mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3153.136mil|Location2.X=3164.386mil|Location1.Y=2869.707mil|Location2.Y=2880.957mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.185mm &lt; 0.254mm) Between Pad C13-1(79.675mm,73.405mm) on Top Layer And Text "C11" (80.875mm,72.784mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.185mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3109.728mil|Location2.X=3120.978mil|Location1.Y=2878.568mil|Location2.Y=2889.818mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3109.728mil|Location2.X=3120.978mil|Location1.Y=2878.568mil|Location2.Y=2889.818mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.16mm &lt; 0.254mm) Between Pad C13-1(79.675mm,73.405mm) on Top Layer And Text "C13" (79mm,73.175mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.16mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3154.281mil|Location2.X=3161.947mil|Location1.Y=2430.72mil|Location2.Y=2438.387mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3154.281mil|Location2.X=3161.947mil|Location1.Y=2430.72mil|Location2.Y=2438.387mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C20-2(80.777mm,61.852mm) on Top Layer And Text "L1" (80.216mm,61.838mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2965.368mil|Location2.X=2976.618mil|Location1.Y=2445.166mil|Location2.Y=2456.416mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2965.368mil|Location2.X=2976.618mil|Location1.Y=2445.166mil|Location2.Y=2456.416mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.194mm &lt; 0.254mm) Between Pad C22-2(75.995mm,62.45mm) on Top Layer And Text "C22" (73.984mm,62.25mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.194mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3463.812mil|Location2.X=3475.062mil|Location1.Y=2872.083mil|Location2.Y=2884.578mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3463.812mil|Location2.X=3475.062mil|Location1.Y=2872.083mil|Location2.Y=2884.578mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.196mm &lt; 0.254mm) Between Pad C8-1(87.575mm,73.58mm) on Top Layer And Text "C12" (88.75mm,71.85mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.196mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3463.668mil|Location2.X=3474.918mil|Location1.Y=2832.962mil|Location2.Y=2844.212mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3463.668mil|Location2.X=3474.918mil|Location1.Y=2832.962mil|Location2.Y=2844.212mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.16mm &lt; 0.254mm) Between Pad C8-2(87.575mm,72.02mm) on Top Layer And Text "C12" (88.75mm,71.85mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.16mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3181.341mil|Location2.X=3192.591mil|Location1.Y=2484.235mil|Location2.Y=2495.485mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3181.341mil|Location2.X=3192.591mil|Location1.Y=2484.235mil|Location2.Y=2495.485mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.09mm &lt; 0.254mm) Between Pad L1-1(80.981mm,63.769mm) on Top Layer And Track (80.698mm,63.274mm)(81.405mm,62.567mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.09mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3203.473mil|Location2.X=3214.723mil|Location1.Y=2506.367mil|Location2.Y=2517.617mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3203.473mil|Location2.X=3214.723mil|Location1.Y=2506.367mil|Location2.Y=2517.617mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.1mm &lt; 0.254mm) Between Pad L1-1(80.981mm,63.769mm) on Top Layer And Track (81.476mm,64.052mm)(82.183mm,63.345mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3203.612mil|Location2.X=3214.862mil|Location1.Y=2461.964mil|Location2.Y=2473.214mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3203.612mil|Location2.X=3214.862mil|Location1.Y=2461.964mil|Location2.Y=2473.214mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.09mm &lt; 0.254mm) Between Pad L1-2(81.9mm,62.85mm) on Top Layer And Track (80.698mm,63.274mm)(81.405mm,62.567mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.09mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3220.176mil|Location2.X=3231.426mil|Location1.Y=2489.664mil|Location2.Y=2500.914mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3220.176mil|Location2.X=3231.426mil|Location1.Y=2489.664mil|Location2.Y=2500.914mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.1mm &lt; 0.254mm) Between Pad L1-2(81.9mm,62.85mm) on Top Layer And Track (81.476mm,64.052mm)(82.183mm,63.345mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3318.593mil|Location2.X=3329.843mil|Location1.Y=2473.325mil|Location2.Y=2484.608mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3318.593mil|Location2.X=3329.843mil|Location1.Y=2473.325mil|Location2.Y=2484.608mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.227mm &lt; 0.254mm) Between Pad L2-1(85.015mm,62.89mm) on Top Layer And Text "L2" (83.429mm,63.368mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.227mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3340.045mil|Location2.X=3351.295mil|Location1.Y=2491.253mil|Location2.Y=2502.503mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3340.045mil|Location2.X=3351.295mil|Location1.Y=2491.253mil|Location2.Y=2502.503mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.1mm &lt; 0.254mm) Between Pad L2-1(85.015mm,62.89mm) on Top Layer And Track (84.733mm,63.385mm)(85.44mm,64.092mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3362.177mil|Location2.X=3373.427mil|Location1.Y=2469.121mil|Location2.Y=2480.371mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3362.177mil|Location2.X=3373.427mil|Location1.Y=2469.121mil|Location2.Y=2480.371mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.09mm &lt; 0.254mm) Between Pad L2-1(85.015mm,62.89mm) on Top Layer And Track (85.51mm,62.608mm)(86.217mm,63.315mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.09mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3356.749mil|Location2.X=3367.999mil|Location1.Y=2507.957mil|Location2.Y=2519.207mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3356.749mil|Location2.X=3367.999mil|Location1.Y=2507.957mil|Location2.Y=2519.207mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.1mm &lt; 0.254mm) Between Pad L2-2(85.935mm,63.81mm) on Top Layer And Track (84.733mm,63.385mm)(85.44mm,64.092mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3384.448mil|Location2.X=3395.698mil|Location1.Y=2491.392mil|Location2.Y=2502.642mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3384.448mil|Location2.X=3395.698mil|Location1.Y=2491.392mil|Location2.Y=2502.642mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.09mm &lt; 0.254mm) Between Pad L2-2(85.935mm,63.81mm) on Top Layer And Track (85.51mm,62.608mm)(86.217mm,63.315mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.09mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3419.838mil|Location2.X=3431.088mil|Location1.Y=3005.005mil|Location2.Y=3016.255mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3419.838mil|Location2.X=3431.088mil|Location1.Y=3005.005mil|Location2.Y=3016.255mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.117mm &lt; 0.254mm) Between Pad R0-1(87.575mm,76.94mm) on Top Layer And Track (86.885mm,75.35mm)(86.885mm,76.95mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3464.582mil|Location2.X=3475.832mil|Location1.Y=3005.005mil|Location2.Y=3016.255mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3464.582mil|Location2.X=3475.832mil|Location1.Y=3005.005mil|Location2.Y=3016.255mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.117mm &lt; 0.254mm) Between Pad R0-1(87.575mm,76.94mm) on Top Layer And Track (88.265mm,75.35mm)(88.265mm,76.95mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3419.838mil|Location2.X=3431.088mil|Location1.Y=2979.808mil|Location2.Y=2991.058mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3419.838mil|Location2.X=3431.088mil|Location1.Y=2979.808mil|Location2.Y=2991.058mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.117mm &lt; 0.254mm) Between Pad R0-2(87.575mm,75.36mm) on Top Layer And Track (86.885mm,75.35mm)(86.885mm,76.95mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3464.582mil|Location2.X=3475.832mil|Location1.Y=2979.808mil|Location2.Y=2991.058mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3464.582mil|Location2.X=3475.832mil|Location1.Y=2979.808mil|Location2.Y=2991.058mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.117mm &lt; 0.254mm) Between Pad R0-2(87.575mm,75.36mm) on Top Layer And Track (88.265mm,75.35mm)(88.265mm,76.95mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2914.099mil|Location2.X=2925.349mil|Location1.Y=3477.906mil|Location2.Y=3489.156mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2914.099mil|Location2.X=2925.349mil|Location1.Y=3477.906mil|Location2.Y=3489.156mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.116mm &lt; 0.254mm) Between Pad R1-1(73.785mm,89.05mm) on Top Layer And Track (73.775mm,88.36mm)(75.375mm,88.36mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.116mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2914.099mil|Location2.X=2925.349mil|Location1.Y=3522.655mil|Location2.Y=3533.905mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2914.099mil|Location2.X=2925.349mil|Location1.Y=3522.655mil|Location2.Y=3533.905mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.116mm &lt; 0.254mm) Between Pad R1-1(73.785mm,89.05mm) on Top Layer And Track (73.775mm,89.74mm)(75.375mm,89.74mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.116mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2946.698mil|Location2.X=2957.948mil|Location1.Y=3477.906mil|Location2.Y=3489.156mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2946.698mil|Location2.X=2957.948mil|Location1.Y=3477.906mil|Location2.Y=3489.156mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.116mm &lt; 0.254mm) Between Pad R1-2(75.365mm,89.05mm) on Top Layer And Track (73.775mm,88.36mm)(75.375mm,88.36mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.116mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2946.698mil|Location2.X=2957.948mil|Location1.Y=3522.655mil|Location2.Y=3533.905mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2946.698mil|Location2.X=2957.948mil|Location1.Y=3522.655mil|Location2.Y=3533.905mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.116mm &lt; 0.254mm) Between Pad R1-2(75.365mm,89.05mm) on Top Layer And Track (73.775mm,89.74mm)(75.375mm,89.74mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.116mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2606.776mil|Location2.X=2618.026mil|Location1.Y=2838.145mil|Location2.Y=2849.395mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2606.776mil|Location2.X=2618.026mil|Location1.Y=2838.145mil|Location2.Y=2849.395mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.117mm &lt; 0.254mm) Between Pad R3-1(65.885mm,72.8mm) on Top Layer And Track (65.875mm,72.11mm)(67.475mm,72.11mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2606.776mil|Location2.X=2618.026mil|Location1.Y=2882.889mil|Location2.Y=2894.139mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2606.776mil|Location2.X=2618.026mil|Location1.Y=2882.889mil|Location2.Y=2894.139mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.117mm &lt; 0.254mm) Between Pad R3-1(65.885mm,72.8mm) on Top Layer And Track (65.875mm,73.49mm)(67.475mm,73.49mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2631.974mil|Location2.X=2643.224mil|Location1.Y=2838.145mil|Location2.Y=2849.395mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2631.974mil|Location2.X=2643.224mil|Location1.Y=2838.145mil|Location2.Y=2849.395mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.117mm &lt; 0.254mm) Between Pad R3-2(67.465mm,72.8mm) on Top Layer And Track (65.875mm,72.11mm)(67.475mm,72.11mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2631.974mil|Location2.X=2643.224mil|Location1.Y=2882.889mil|Location2.Y=2894.139mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2631.974mil|Location2.X=2643.224mil|Location1.Y=2882.889mil|Location2.Y=2894.139mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.117mm &lt; 0.254mm) Between Pad R3-2(67.465mm,72.8mm) on Top Layer And Track (65.875mm,73.49mm)(67.475mm,73.49mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3604.808mil|Location2.X=3616.058mil|Location1.Y=2801.727mil|Location2.Y=2812.977mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3604.808mil|Location2.X=3616.058mil|Location1.Y=2801.727mil|Location2.Y=2812.977mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.117mm &lt; 0.254mm) Between Pad R4-1(91.235mm,71.875mm) on Top Layer And Track (91.225mm,71.185mm)(92.825mm,71.185mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3604.808mil|Location2.X=3616.058mil|Location1.Y=2846.471mil|Location2.Y=2857.721mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3604.808mil|Location2.X=3616.058mil|Location1.Y=2846.471mil|Location2.Y=2857.721mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.117mm &lt; 0.254mm) Between Pad R4-1(91.235mm,71.875mm) on Top Layer And Track (91.225mm,72.565mm)(92.825mm,72.565mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3630.005mil|Location2.X=3641.255mil|Location1.Y=2801.727mil|Location2.Y=2812.977mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3630.005mil|Location2.X=3641.255mil|Location1.Y=2801.727mil|Location2.Y=2812.977mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.117mm &lt; 0.254mm) Between Pad R4-2(92.815mm,71.875mm) on Top Layer And Track (91.225mm,71.185mm)(92.825mm,71.185mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3630.005mil|Location2.X=3641.255mil|Location1.Y=2846.471mil|Location2.Y=2857.721mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3630.005mil|Location2.X=3641.255mil|Location1.Y=2846.471mil|Location2.Y=2857.721mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.117mm &lt; 0.254mm) Between Pad R4-2(92.815mm,71.875mm) on Top Layer And Track (91.225mm,72.565mm)(92.825mm,72.565mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3440.507mil|Location2.X=3451.757mil|Location1.Y=3369.572mil|Location2.Y=3380.822mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3440.507mil|Location2.X=3451.757mil|Location1.Y=3369.572mil|Location2.Y=3380.822mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.117mm &lt; 0.254mm) Between Pad R5-1(88.1mm,85.26mm) on Bottom Layer And Track (87.41mm,85.25mm)(87.41mm,86.85mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3485.251mil|Location2.X=3496.501mil|Location1.Y=3369.572mil|Location2.Y=3380.822mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3485.251mil|Location2.X=3496.501mil|Location1.Y=3369.572mil|Location2.Y=3380.822mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.117mm &lt; 0.254mm) Between Pad R5-1(88.1mm,85.26mm) on Bottom Layer And Track (88.79mm,85.25mm)(88.79mm,86.85mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3462.049mil|Location2.X=3473.299mil|Location1.Y=3434.754mil|Location2.Y=3446.004mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3462.049mil|Location2.X=3473.299mil|Location1.Y=3434.754mil|Location2.Y=3446.004mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.151mm &lt; 0.254mm) Between Pad R5-2(88.1mm,86.84mm) on Bottom Layer And Text "R5" (89.095mm,87.588mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.151mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3440.505mil|Location2.X=3451.755mil|Location1.Y=3398.47mil|Location2.Y=3409.72mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3440.505mil|Location2.X=3451.755mil|Location1.Y=3398.47mil|Location2.Y=3409.72mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.116mm &lt; 0.254mm) Between Pad R5-2(88.1mm,86.84mm) on Bottom Layer And Track (87.41mm,85.25mm)(87.41mm,86.85mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.116mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3485.253mil|Location2.X=3496.503mil|Location1.Y=3398.47mil|Location2.Y=3409.72mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\EFE\Desktop\Tez_Tasarim\frequency_synthesizer\pll_layout.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3485.253mil|Location2.X=3496.503mil|Location1.Y=3398.47mil|Location2.Y=3409.72mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.116mm &lt; 0.254mm) Between Pad R5-2(88.1mm,86.84mm) on Bottom Layer And Track (88.79mm,85.25mm)(88.79mm,86.85mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.116mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

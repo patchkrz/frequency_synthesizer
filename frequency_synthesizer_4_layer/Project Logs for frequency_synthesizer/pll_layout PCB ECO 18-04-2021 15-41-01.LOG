@@ -1,0 +1,8 @@
+Added Component: Designator=M1(MOUNTING_HOLE_NP_M3)
+Added Component: Designator=M2(MOUNTING_HOLE_NP_M3)
+Added Component: Designator=M3(MOUNTING_HOLE_NP_M3)
+Added Component: Designator=M4(MOUNTING_HOLE_NP_M3)
+Added Member To Class: ClassName=pll_schematic Member=Component M1 MOUNTING_HOLE
+Added Member To Class: ClassName=pll_schematic Member=Component M2 MOUNTING_HOLE
+Added Member To Class: ClassName=pll_schematic Member=Component M3 MOUNTING_HOLE
+Added Member To Class: ClassName=pll_schematic Member=Component M4 MOUNTING_HOLE
