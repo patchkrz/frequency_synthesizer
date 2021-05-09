@@ -1,0 +1,14 @@
+Change Component Comment : Designator=J3 Old Comment=OPT New Comment=-
+Change Component Comment : Designator=J4 Old Comment=OPT New Comment=-
+Added Component: Designator=JP3(PIN_HEADER_1X01)
+Added Component: Designator=JP4(PIN_HEADER_1X01)
+Added Component: Designator=JP5(PIN_HEADER_1X01)
+Added Component: Designator=JP6(PIN_HEADER_1X01)
+Added Pin To Net: NetName=CP Pin=JP3-1
+Added Pin To Net: NetName=REF-IN Pin=JP4-1
+Added Pin To Net: NetName=GND Pin=JP5-1
+Added Pin To Net: NetName=GND Pin=JP6-1
+Added Member To Class: ClassName=pll_schematic Member=Component JP3 -
+Added Member To Class: ClassName=pll_schematic Member=Component JP4 -
+Added Member To Class: ClassName=pll_schematic Member=Component JP5 -
+Added Member To Class: ClassName=pll_schematic Member=Component JP6 -
