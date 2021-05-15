@@ -1,0 +1,3 @@
+Removed Pin From Net: NetName=GND Pin=Y2-4
+Removed Member From Class: ClassName=pll_schematic Member=Y2
+Added Member To Class: ClassName=pll_schematic Member=Component R6 51.1R

@@ -1,0 +1,25 @@
+Change component parameters: Designator = "D1" ("D1"); Footprint = "D0805"; UniqueID = "\VMLVTCZH" ("\VMLVTCZH")
+Change component parameters (AddParameter): Name = "ASSEMBLY"; Value = "OPT"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R3" ("R3"); Footprint = "R0603"; UniqueID = "\ULQHBITW" ("\ULQHBITW")
+Change component parameters (AddParameter): Name = "ASSEMBLY"; Value = "OPT"; VariantName = "[No Variations]"
+Added Component: Designator=R5(R0603)
+Add component (AddParameter): Name = "ASSEMBLY"; Value = "OPT"; VariantName = "[No Variations]"
+Added Component: Designator=R6(R0603)
+Add component (AddParameter): Name = "ASSEMBLY"; Value = "OPT"; VariantName = "[No Variations]"
+Added Component: Designator=R7(R0603)
+Add component (AddParameter): Name = "ASSEMBLY"; Value = "OPT"; VariantName = "[No Variations]"
+Added Component: Designator=R8(R0603)
+Add component (AddParameter): Name = "ASSEMBLY"; Value = "OPT"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=J1-9
+Added Pin To Net: NetName=GND Pin=R5-1
+Added Pin To Net: NetName=SDO Pin=R5-2
+Added Pin To Net: NetName=GND Pin=R6-1
+Added Pin To Net: NetName=SDI Pin=R6-2
+Added Pin To Net: NetName=GND Pin=R7-1
+Added Pin To Net: NetName=SCLK Pin=R7-2
+Added Pin To Net: NetName=CS' Pin=R8-1
+Added Pin To Net: NetName=3.3V Pin=R8-2
+Added Member To Class: ClassName=pll_schematic Member=Component R5 200K
+Added Member To Class: ClassName=pll_schematic Member=Component R6 51.1R
+Added Member To Class: ClassName=pll_schematic Member=Component R7 200K
+Added Member To Class: ClassName=pll_schematic Member=Component R8 200K

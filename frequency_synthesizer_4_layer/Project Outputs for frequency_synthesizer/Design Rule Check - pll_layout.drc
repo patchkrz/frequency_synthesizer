@@ -1,7 +1,7 @@
 Protel Design System Design Rule Check
 PCB File : C:\Users\EFE\Desktop\New folder\frequency_synthesizer\frequency_synthesizer_4_layer\pll_layout.PcbDoc
-Date     : 09/05/2021
-Time     : 18:15:54
+Date     : 15/05/2021
+Time     : 14:45:19
 
 Processing Rule : Clearance Constraint (Gap=0.254mm) (InNamedPolygon('NETC21_2_L01_P002')),(All)
 Rule Violations :0
@@ -9,13 +9,13 @@ Rule Violations :0
 Processing Rule : Clearance Constraint (Gap=0.254mm) (All),(All)
 Rule Violations :0
 
-Processing Rule : Clearance Constraint (Gap=0.254mm) (InNamedPolygon('NETC20_2_L01_P002')),(All)
+Processing Rule : Clearance Constraint (Gap=0.293mm) (InNamedPolygon('NETC20_2_L01_P002')),(All)
 Rule Violations :0
 
-Processing Rule : Clearance Constraint (Gap=0.254mm) (InNamedPolygon('NETC20_1_L01_P002')),(All)
+Processing Rule : Clearance Constraint (Gap=0.293mm) (InNet('NetC20_1')),(InNet('NetC20_1'))
 Rule Violations :0
 
-Processing Rule : Clearance Constraint (Gap=0.254mm) (InNamedPolygon('NETC21_1_L01_P002')),(All)
+Processing Rule : Clearance Constraint (Gap=0.293mm) (InNet('NetC21_1')),(InNet('NetC21_1'))
 Rule Violations :0
 
 Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)

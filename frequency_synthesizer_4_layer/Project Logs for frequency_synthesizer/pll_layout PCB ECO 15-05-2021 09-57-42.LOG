@@ -1,0 +1,10 @@
+Change Component Comment : Designator=J3 Old Comment=OPT New Comment=-
+Change Component Comment : Designator=J4 Old Comment=OPT New Comment=-
+Added Component: Designator=Y2(XOSC_SMD)
+Add component (AddParameter): Name = "ASSEMBLY"; Value = "OPT"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=Y2-4
+Added Pin To Net: NetName=NetY1_1 Pin=Y1-1
+Added Pin To Net: NetName=NetY1_1 Pin=Y2-1
+Added Net: Name=NetY1_1
+Added Member To Class: ClassName=pll_schematic Member=Component R6 51.1R
+Added Member To Class: ClassName=pll_schematic Member=Component Y2 -
