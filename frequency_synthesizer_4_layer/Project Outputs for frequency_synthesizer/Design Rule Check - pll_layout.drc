@@ -1,7 +1,7 @@
 Protel Design System Design Rule Check
 PCB File : C:\Users\EFE\Desktop\New folder\frequency_synthesizer\frequency_synthesizer_4_layer\pll_layout.PcbDoc
-Date     : 16/05/2021
-Time     : 15:10:59
+Date     : 26/05/2021
+Time     : 13:26:14
 
 Processing Rule : Clearance Constraint (Gap=0.254mm) (InNamedPolygon('NETC21_2_L01_P002')),(All)
 Rule Violations :0
