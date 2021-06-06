@@ -1,4 +1,0 @@
-Added Component: Designator=R6(R0603)
-Added Pin To Net: NetName=GND Pin=R6-1
-Added Pin To Net: NetName=REF-IN Pin=R6-2
-Added Member To Class: ClassName=pll_schematic Member=Component R6 51.1R

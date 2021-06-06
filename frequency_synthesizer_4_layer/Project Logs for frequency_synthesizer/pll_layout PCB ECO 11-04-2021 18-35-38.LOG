@@ -1,4 +1,0 @@
-Added Component: Designator=R2(R1206)
-Added Pin To Net: NetName=5V Pin=R2-1
-Added Pin To Net: NetName=5V Pin=R2-2
-Added Member To Class: ClassName=pll_schematic Member=Component R2 0R

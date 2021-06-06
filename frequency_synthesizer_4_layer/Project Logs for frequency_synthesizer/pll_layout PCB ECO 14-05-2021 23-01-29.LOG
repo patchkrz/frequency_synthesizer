@@ -1,7 +1,0 @@
-Removed Pin From Net: NetName=GPIO Pin=Q1-1
-Removed Pin From Net: NetName=GND Pin=Q1-2
-Removed Pin From Net: NetName=MUTE' Pin=Q1-3
-Removed Pin From Net: NetName=MUTE' Pin=R5-1
-Removed Pin From Net: NetName=3.3V Pin=R5-2
-Removed Member From Class: ClassName=pll_schematic Member=Q1
-Removed Member From Class: ClassName=pll_schematic Member=R5

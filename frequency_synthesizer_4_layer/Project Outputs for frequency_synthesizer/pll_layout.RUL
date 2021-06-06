@@ -1,0 +1,9 @@
+DRC Rules Export File for PCB: C:\Users\EFE\Desktop\New folder\frequency_synthesizer\frequency_synthesizer_4_layer\pll_layout.PcbDoc
+RuleKind=Clearance|RuleName=NETC20_1|Scope=Board|Minimum=11.55
+RuleKind=Clearance|RuleName=NETC21_1|Scope=Board|Minimum=11.55
+RuleKind=Clearance|RuleName=NETC20_2|Scope=Board|Minimum=11.55
+RuleKind=Clearance|RuleName=Clearance_6|Scope=Board|Minimum=10.00
+RuleKind=SolderMaskExpansion|RuleName=SolderMaskExpansion|Scope=Board|Minimum=1.97
+RuleKind=Width|RuleName=Width|Scope=Board|Minimum=7.87
+RuleKind=Clearance|RuleName=STD_Clearance|Scope=Board|Minimum=10.00
+RuleKind=ShortCircuit|RuleName=ShortCircuit|Scope=Board|Allowed=0

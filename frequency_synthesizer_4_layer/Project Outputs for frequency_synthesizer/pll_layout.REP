@@ -1,0 +1,333 @@
+*************************************************************
+FileName = pll_layout.GBR
+AutoAperture = True
+*************************************************************
+Generating : Keep-Out Layer
+      File : pll_layout.GKO
+
+    Adding Layer      : Keep-Out Layer
+
+
+Used DCodes :
+    D12
+*************************************************************
+
+*************************************************************
+Generating : Bottom Overlay
+      File : pll_layout.GBO
+
+    Adding Layer      : Bottom Overlay
+
+
+Used DCodes :
+    D12
+*************************************************************
+
+*************************************************************
+Generating : Bottom Paste
+      File : pll_layout.GBP
+
+    Adding Layer      : Bottom Paste
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D17
+    D22
+    D71
+*************************************************************
+
+*************************************************************
+Generating : Bottom Solder
+      File : pll_layout.GBS
+
+    Adding Layer      : Bottom Solder
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D34
+    D39
+    D50
+    D51
+    D52
+    D53
+    D54
+    D55
+    D72
+*************************************************************
+
+*************************************************************
+Generating : Top Solder
+      File : pll_layout.GTS
+
+    Adding Layer      : Top Solder
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D33
+    D34
+    D35
+    D36
+    D37
+    D38
+    D39
+    D40
+    D41
+    D42
+    D43
+    D44
+    D45
+    D46
+    D47
+    D48
+    D49
+    D50
+    D51
+    D52
+    D53
+    D54
+    D55
+*************************************************************
+
+*************************************************************
+Generating : Top Paste
+      File : pll_layout.GTP
+
+    Adding Layer      : Top Paste
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D16
+    D17
+    D18
+    D19
+    D20
+    D21
+    D22
+    D23
+    D24
+    D25
+    D26
+    D27
+    D28
+    D29
+    D30
+    D31
+    D32
+*************************************************************
+
+*************************************************************
+Generating : Top Overlay
+      File : pll_layout.GTO
+
+    Adding Layer      : Top Overlay
+
+
+Used DCodes :
+    D10
+    D11
+    D12
+    D13
+    D14
+    D15
+*************************************************************
+
+*************************************************************
+Generating : Top Pad Master
+      File : pll_layout.GPT
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D16
+    D17
+    D18
+    D19
+    D20
+    D21
+    D22
+    D23
+    D24
+    D25
+    D26
+    D27
+    D28
+    D29
+    D30
+    D31
+    D32
+    D51
+    D67
+    D68
+*************************************************************
+
+*************************************************************
+Generating : Bottom Pad Master
+      File : pll_layout.GPB
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D17
+    D22
+    D51
+    D67
+    D68
+    D71
+*************************************************************
+
+*************************************************************
+Generating : Bottom Layer
+      File : pll_layout.GBL
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D17
+    D22
+    D51
+    D55
+    D61
+    D62
+    D63
+    D64
+    D67
+    D68
+    D69
+    D70
+    D71
+*************************************************************
+
+*************************************************************
+Generating : PWR_L3
+      File : pll_layout.G2
+
+    Adding Layer      : PWR_L3
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D51
+    D55
+    D68
+    D69
+    D70
+*************************************************************
+
+*************************************************************
+Generating : GND_L2
+      File : pll_layout.G1
+
+    Adding Layer      : GND_L2
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D51
+    D55
+    D67
+    D68
+*************************************************************
+
+*************************************************************
+Generating : Top Layer
+      File : pll_layout.GTL
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D10
+    D11
+    D12
+    D16
+    D17
+    D18
+    D19
+    D20
+    D21
+    D22
+    D23
+    D24
+    D25
+    D26
+    D27
+    D28
+    D29
+    D30
+    D31
+    D32
+    D51
+    D55
+    D56
+    D57
+    D58
+    D59
+    D60
+    D61
+    D62
+    D63
+    D64
+    D65
+    D66
+    D67
+    D68
+    D69
+    D70
+*************************************************************
+
+*************************************************************
+Generating : Drill Drawing
+      File : pll_layout.GD1
+
+    Adding Drill Pair : Top Layer-Bottom Layer
+
+    Adding Layer      : Drill Drawing
+
+
+Used DCodes :
+    D73
+    D74
+*************************************************************
+
+*************************************************************
+Generating : Drill Guide
+      File : pll_layout.GG1
+
+    Adding Drill Pair : Top Layer-Bottom Layer
+
+    Adding Layer      : Drill Guide
+
+
+Used DCodes :
+    D73
+*************************************************************
+

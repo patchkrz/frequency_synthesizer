@@ -1,6 +1,0 @@
-Removed Pin From Net: NetName=MUTE' Pin=Q1-1
-Removed Pin From Net: NetName=GPIO Pin=Q1-2
-Removed Pin From Net: NetName=GND Pin=Q1-3
-Added Pin To Net: NetName=GPIO Pin=Q1-1
-Added Pin To Net: NetName=GND Pin=Q1-2
-Added Pin To Net: NetName=MUTE' Pin=Q1-3
