@@ -312,8 +312,8 @@ AutoOpenFile=-1
 AutoOpenOutJob=0
 
 [Generic_SmartPDFSettings]
-ProjectMode=-1
-ZoomPrecision=62
+ProjectMode=0
+ZoomPrecision=52
 AddNetsInformation=-1
 AddNetPins=-1
 AddNetNetLabels=-1
@@ -325,7 +325,7 @@ TemplateFilename=Board Stack Report.XLT
 TemplateStoreRelative=-1
 PCB_PrintColor=1
 SCH_PrintColor=0
-PrintQuality=-4
+PrintQuality=-3
 SCH_ShowNoErc=-1
 SCH_ShowParameter=-1
 SCH_ShowProbes=-1
